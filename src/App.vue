@@ -18,7 +18,6 @@ const deletePlace = (name) => {
   <main class="py-4">
     <div class="text-right  pt-2 mb-6 pr-5 tracking-wider ">
     <span class=" text-sm text-white">
-
       {{ new Date().toLocaleDateString('eu-us', {
         weekday: 'long',
         year: 'numeric',
