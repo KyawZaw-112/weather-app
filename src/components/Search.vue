@@ -4,6 +4,7 @@ import { reactive } from 'vue';
 
 const emit = defineEmits(['place-data'])
 
+
 const searchTerm = reactive({
     query: '',
     timeout: null,
@@ -15,7 +16,7 @@ const handleSearch = () => {
     searchTerm.timeout = setTimeout(async () => {
         if (searchTerm.query !== '') {
             // console.log(searchTerm.query);
-            const fetchData = await fetch(`http://api.weatherapi.com/v1/search.json?key=7d6a3afe6fec46849b441712242901&q=${searchTerm.query}`)
+            const fetchData = await fetch(`https://api.weatherapi.com/v1/search.json?key=7d6a3afe6fec46849b441712242901&q=${searchTerm.query}`)
             const data = await fetchData.json()
             searchTerm.results = data
         } else {
@@ -25,7 +26,7 @@ const handleSearch = () => {
 }
 
 const fetchWeather = async(id) => {
-    const getForcast = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=7d6a3afe6fec46849b441712242901&q=id:${id}&days=7&aqi=no&alerts=no`) 
+    const getForcast = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=7d6a3afe6fec46849b441712242901&q=id:${id}&days=7&aqi=no&alerts=no`) 
     const data =  await getForcast.json();
     emit('place-data',data)
     searchTerm.query = '';
